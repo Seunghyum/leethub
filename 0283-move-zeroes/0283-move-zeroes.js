@@ -4,17 +4,16 @@
  */
 
 var moveZeroes = function(nums) {
-    let count = 0
-    for(let i=0;i+count<nums.length-1;i++) {
-        if(nums[i] === 0) {
-            nums.splice(i,1)
-            nums.push(0)
-            count++
-            i--
+    let insertPos = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] !== 0) {
+            nums[insertPos++] = nums[i];
         }
     }
+    while (insertPos < nums.length) {
+        nums[insertPos++] = 0;
+    }
 };
-
 /**
 - 내 답안
 
