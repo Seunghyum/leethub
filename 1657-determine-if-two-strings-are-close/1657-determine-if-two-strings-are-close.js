@@ -18,11 +18,7 @@ var closeStrings = function(word1, word2) {
     for(const key in map1) {
         if(map2[key] === undefined) return false
     }
-    const values1 = Object.values(map1).sort()
-    const values2 = Object.values(map2).sort()
-    if(values1.length !== values2.length) return false
-    for(let i=0;i<values1.length;i++) {
-        if(values1[i] !== values2[i]) return false
-    }
-    return true
+    const values1 = Object.values(map1).sort().join('')
+    const values2 = Object.values(map2).sort().join('')
+    return values1 === values2
 };
