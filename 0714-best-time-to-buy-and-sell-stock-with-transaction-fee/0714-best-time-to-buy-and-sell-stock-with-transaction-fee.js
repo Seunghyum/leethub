@@ -5,22 +5,15 @@
  */
 var maxProfit = function(prices, fee) {
     const n = prices.length;
-    const memo = [...new Array(n)].map(() => new Array(2).fill(-1));
+    const dp = [...new Array(n + 1)].map(() => new Array(2).fill(0));
 
-    function dp(i, j) {
-        if (i === n) return 0;
-
-        if (memo[i][j] !== -1) return memo[i][j];
-
-        if (j === 0) {
-            return memo[i][j] = Math.max(-prices[i] + dp(i + 1, 1), dp(i + 1, 0));
-        } else {
-            return memo[i][j] = Math.max(prices[i] - fee + dp(i + 1, 0), dp(i + 1, 1));
-        }
+    for (let i = n - 1; i >= 0; i--) {
+        dp[i][0] = Math.max(-prices[i] + dp[i + 1][1], dp[i + 1][0]);
+        dp[i][1] = Math.max(prices[i] + dp[i + 1][0] - fee, dp[i + 1][1]);
     }
-    return dp(0, 0);
-};
 
+    return dp[0][0]
+};
 /**
 
 - 내 답안 TC: (nLogN)
