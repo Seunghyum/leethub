@@ -11,7 +11,7 @@ var combinationSum3 = function(k, n) {
     
     return answer
     function backtracking(pos, arr) {
-        console.log("==== pos : ", pos)
+        // console.log("==== pos : ", pos)
         if(pos+1 > k) return
         if(arr.reduce((a,b) => a+b,0) > n) return
         if(pos+1 === k && arr.reduce((a,b) => a+b,0) === n) return answer.push(arr)
