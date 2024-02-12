@@ -9,20 +9,29 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function(head) {
-    if(head === null) return null
+
+var reverseList = function(head, prev = null) {
+    if(!head) return prev
     
-    let cur = head
-    const arr = []
-    arr.push(cur)
-    while(cur.next) {
-        cur = cur.next
-        arr.push(cur)
-    }
+    const next = head.next
+    head.next = prev
+    return reverseList(next, head)
+}
+
+// var reverseList = function(head) {
+//     if(head === null) return null
     
-    for(let i=arr.length-1;i>=0;i--) {
-        arr[i].next = arr[i-1] || null
-    }
+//     let cur = head
+//     const arr = []
+//     arr.push(cur)
+//     while(cur.next) {
+//         cur = cur.next
+//         arr.push(cur)
+//     }
     
-    return arr[arr.length-1]
-};
+//     for(let i=arr.length-1;i>=0;i--) {
+//         arr[i].next = arr[i-1] || null
+//     }
+    
+//     return arr[arr.length-1]
+// };
