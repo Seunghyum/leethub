@@ -3,8 +3,7 @@
  * @return {string}
  */
 var countAndSay = function(n, target = '1') {
-    // console.log('==== n : ', n)
-    if(n === 1) return target || '1'
+    if(n === 1) return target
     
     let cur = '', count = 0, res = ''
     for(let i=0;i<target.length;i++) {
@@ -17,7 +16,6 @@ var countAndSay = function(n, target = '1') {
         }
     }
     res += `${count}${cur}`
-    // console.log('res : ', res)
     
     return countAndSay(n-1, res)
 };
